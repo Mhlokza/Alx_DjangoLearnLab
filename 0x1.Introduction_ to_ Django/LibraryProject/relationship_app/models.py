@@ -15,3 +15,4 @@ class Library(models.Model):
 class Librarian(models.Model):
     name = models.CharField()
     library = models.OneToOneField(Library, on_delete=model.CASCADE)
+        
