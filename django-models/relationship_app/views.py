@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Library
 
 def list_books(request):
     books = Book.objects.all()
@@ -9,4 +10,4 @@ def list_books(request):
 class LibraryDetailView(DetailView):
     model = Library
     template_name = 'relationship_app/library_detail.html'
-    
+
