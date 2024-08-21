@@ -1,23 +1,25 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Author(models.Model):
-    name = models.CharField()
+    name = models.CharField(max_length=20)
 
 class Book(models.Model):
-    title = models.CharField()
-    author = models.Foreignkey(author, on_delete = models.CASCADE, name= 'writer')
-    return self.name
+    title = models.CharField(max_length=50)
+    author = models.ForeignKey(Author, on_delete = models.CASCADE, name= 'writer')
+    def __str__(self):
+        return self.name
     
 class Library(models.Model):
-    name = models.CharField()
+    name = models.CharField(max_length=20)
     books = models.ManyToManyField(Book, related_name ='library')
 
 class Librarian(models.Model):
-    name = models.CharField()
-    library = models.OneToOneField(Library, on_delete=model.CASCADE)
+    name = models.CharField(max_length=20)
+    library = models.OneToOneField(Library, on_delete=models.CASCADE)
 
-    class UserProfile(models.Model):
+class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     ROLE_CHOICES = ('admin', 'Admin'), ('librarian', 'Librarian'), ('member', 'Member')
     role = models.CharField(max_length=20, choices = ROLE_CHOICES)
@@ -39,3 +41,5 @@ from django.dispatch import receiver
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:
+        UserProfile.objects.create(user=instance)
+    instance.userprofile.save()
