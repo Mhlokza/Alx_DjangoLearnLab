@@ -43,3 +43,28 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
     instance.userprofile.save()
+
+#authethication
+from django.contrib.auth.models import BaseUserManager, AbstractUser
+class User(AbstractUser):
+    date_of_birth = models.DateField(max_length=20)
+    profile_photo = models.ImageField()
+
+class UserManager(BaseUserManager):
+    def create_user(self,email,password):
+        if not email:
+            raise valuesError("user must have email")
+        user = self.model(email= self.normalize_email(email))
+        user.set_password(password)
+        user.save(using= self._db)
+        return user
+
+
+    def create_superuser(self,email,password):
+        user=self.create_user(email,password)
+
+        user.is_staff = True
+        user.is_superuser = True
+        user.save(using = self._db)
+        return user
+
