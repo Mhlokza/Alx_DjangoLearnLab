@@ -1,1 +1,0 @@
-This is my Django README.md
