@@ -5,7 +5,7 @@ from .models import User
 class UserAdmin(CustomUserAdmin):
     pass
 
-admin.site.register(User, UserAdmin)
+admin.site.register(CustomUser, CustomUserAdmin)
 
 # Register your models here.
 admin.site.register(Book)
