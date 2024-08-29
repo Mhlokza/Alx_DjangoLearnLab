@@ -1,3 +1,6 @@
 from django.shortcuts import render
+def edit(request):
+    @permission_required('bookshelf.can_edit', raise_exception=True)
 
-# Create your views here.
+else:
+    raise raise_exception("you have no permission")

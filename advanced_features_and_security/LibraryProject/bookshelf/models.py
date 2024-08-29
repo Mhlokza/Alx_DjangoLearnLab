@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.
+from django.contrib.auth.models import Permission
 
 # Create your models here.
 class Book(models.Model):
@@ -28,3 +28,10 @@ class CustomUserManager(BaseUserManager):
         user.is_superuser = True
         user.save(using =self._db)
         user.save()
+# get permissions
+permissions = Permission.objects.get(codename = 'can_view, can_create, can_edit, can_delete')
+permission =Permission.objects.get(codename = 'can_view')
+admin_perm = Permission.objects.get(codename = 'can_view, can_delete')
+Editors.permissions.add(permissions)
+Viewers.Permission.add(permission)
+Admins.Permission.add(admin_perm)
