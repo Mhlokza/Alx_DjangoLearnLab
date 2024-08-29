@@ -4,3 +4,5 @@ def edit(request):
 
 else:
     raise raise_exception("you have no permission")
+
+book_list
