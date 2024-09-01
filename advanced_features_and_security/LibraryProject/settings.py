@@ -113,13 +113,21 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = "static/"
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = 'bookshelf.CustomUse'
+
+SECURE_BROWSER_XSS_FILTER = True 
+X_FRAME_OPTIONS = 'DENY' 
+SECURE_CONTENT_TYPE_NOSNIFF = True 
+CSRF_COOKIE_SECURE = True 
+SESSION_COOKIE_SECURE = True 
+
+SECURE_SSL_REDIRECT = True 
+SECURE_HSTS_SECONDS =  31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True 
+SECURE_HSTS_PRELOAD = True 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
