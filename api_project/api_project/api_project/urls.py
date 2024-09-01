@@ -1,3 +1,5 @@
+from rest_framework.routers import BookViewSet
+
 """
 URL configuration for api_project project.
 
@@ -19,4 +21,5 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', api.Book.urls),
 ]
