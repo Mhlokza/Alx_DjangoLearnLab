@@ -5,6 +5,6 @@ from .serializers import MyModelSerializer
 
 class BookList(rest_framework.generics.ListAPIView):
     queryset = Book.objects.all()
-    Book = BookSerializer
+    BookViewSet = BookSerializer
 
 
