@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.auth.models import BaseUserManager, AbstractUser
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 # Create your models here.
 class Author(models.Model):
@@ -35,8 +38,7 @@ class UserProfile(models.Model):
     def _str_(self):
         return f"{self.user.username} - {self.role}"
 
-from django.db.models.signals import post_save
-from django.dispatch import receiver
+
 
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
@@ -45,7 +47,6 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     instance.userprofile.save()
 
 #authethication
-from django.contrib.auth.models import BaseUserManager, AbstractUser
 class User(AbstractUser):
     date_of_birth = models.DateField(max_length=20)
     profile_photo = models.ImageField()
@@ -67,4 +68,8 @@ class UserManager(BaseUserManager):
         user.is_superuser = True
         user.save(using = self._db)
         return user
+
+class CustomUser(AbstractUser):
+    date_of_birth
+    profile_photo
 
