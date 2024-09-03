@@ -1,3 +1,4 @@
-from rest_framework.routers import BookViewSet
+pythonCopy codefrom django.urls import path 
+from .views import BookListCreatAPIView
 
-urlpatterns=[path('', api.Book.urls),]
+urlspattens = [path("api/books", views.BookListCreateAPIView.as_view(), name="book_list_create"),]
