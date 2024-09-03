@@ -17,10 +17,11 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from rest_framework import viewsets.DefaultRouter
+from rest_framework.routers import DefaultRouter 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path(" ",api.urls),
     path((DefaultRouter()), router.urls, include),
+    path(" ", api.BookViewSet),
 ]
