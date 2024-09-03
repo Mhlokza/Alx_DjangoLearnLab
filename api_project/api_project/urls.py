@@ -25,4 +25,4 @@ urlpatterns = [
     path((DefaultRouter()), router.urls, include),
     path(" ", api.BookViewSet),
 ]
-["DefaultRouter()", "router.urls", "include"]
+DefaultRouter(),router.urls, include
