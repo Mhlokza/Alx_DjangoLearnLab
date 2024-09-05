@@ -31,5 +31,3 @@ class BlogPostSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("publication time cannot be in the future")
         return data
         #return the current data
-
-    
