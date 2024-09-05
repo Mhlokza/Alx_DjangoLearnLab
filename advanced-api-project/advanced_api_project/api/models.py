@@ -30,5 +30,6 @@ class BlogPostSerializer(serializers.ModelSerializer):
         if not (data['publication_year']) < datetime.now():
             raise serializers.ValidationError("publication time cannot be in the future")
         return data
+        #return the current data
 
     
