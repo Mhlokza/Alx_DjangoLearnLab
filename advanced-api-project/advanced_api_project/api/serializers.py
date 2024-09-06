@@ -1,15 +1,5 @@
-from django.db import models
+from .models import Book, Author 
 from rest_framework import serializers
-from datetime import datetime
-from .models import BlogPost
-
-class Author(models.Model):
-    name = models.CharField(max_length=100)
-
-class Book(models.Model):
-    title = models.CharField(max_length=100)
-    publication_year = models.IntegerField()
-    author = models.ForeignKey(Author,on_delete=models.CASCADE, related_name='product')
 
 class BookSerializer(serializers.BookSerializer):
     class Meta:
@@ -30,4 +20,3 @@ class BlogPostSerializer(serializers.ModelSerializer):
         if not (data['publication_year']) < datetime.now():
             raise serializers.ValidationError("publication time cannot be in the future")
         return data
-        #return the current data
