@@ -1,6 +1,7 @@
 from rest_framework.generics import(ListAPIView, DetailAPIView, CreateAPIView, UpdateAPIView, DeleteAPIView)
 from .models import Book
 from .serializers import BookSerializer
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated, IsAuthenticated
 
 class  ListView(generics.ListAPIView):
     queryset =Book.objects.all()
@@ -23,3 +24,12 @@ class DeleteView(DeleteAPIView):
     serializer_class =BookSerializer
 
 
+
+class CreateView(CreateView):
+    permission_classes = [IsAuthenticated|ReadOnly]
+
+    def get(self, request, format=None):
+        content = {
+            'status': 'request was permitted'
+        }
+        return Response(content)
