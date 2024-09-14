@@ -3,6 +3,10 @@ from rest_framework import generics.ListAPIView
 from .models import Book
 from .serializers import MyModelSerializer 
 from .serializers import BookSerializer
+from .permissions import IsAdminOrEditor, IsAdmin
+from django_filters import rest_framework
+from rest_framework import filters
+from .filters import BookFilter
 
 class BookList(rest_framework.generics.ListAPIView):
     queryset = Book.objects.all()
