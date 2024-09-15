@@ -1,0 +1,17 @@
+{%extends 'blog/base.html'%}
+
+{%block title %} Profile {% endblock%}
+{% block content %}
+<html profile></html>
+<form method="post"
+    {%csrf_token%}
+    {{form.as_p}}
+
+    button type = "submit">save</button>
+</form>
+{%endblock%}
+
+
+
+
+

@@ -135,3 +135,5 @@ TEMPLATES = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_MODEL_FIELD = "USER"
 AUTH_MODEL_FIELD = "PORT"
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "post_list"

@@ -1,0 +1,13 @@
+{%extends 'blog/base.html'%}
+{%block title %} Register form {% endblock%}
+
+
+{%block content%}
+<form action = "{%url 'register'%}" method = 'post'>
+    {%csrf_token%}
+    {{form.as_p}}
+
+    <button type = "submit">save</button>
+</form>
+<p> already have an account? Login <a href = "{%url = 'login'%}" >here</a></p>
+{%endblock%}
