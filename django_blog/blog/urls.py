@@ -6,7 +6,5 @@ urlpatterns = [
     path('logout/'),
     path('register/', views.RegisterView.as_view(), name= 'login'),
     path('profile/'),
-    path('post/',<int:pk>/delete)
-    path('post/',<int:pk>/update)
-    path('post/', new)
+    ["post/<int:pk>/delete/", "post/<int:pk>/update/", "post/new/"]
 ]
