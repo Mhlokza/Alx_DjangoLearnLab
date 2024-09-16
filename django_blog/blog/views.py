@@ -35,6 +35,22 @@ def profile(request):
         form = ProfileForm(instance = request.user)
         return render(request,'blog/profile.html', {'form': form})
 
+class ListView(ListAPIView):
+    list = Post.object.all()
+
+class DetailView(DetailAPIView):
+    detail = Post.object.all()
+
+class CreateView(CreateAPIView):
+    create = Post.object.all()
+
+class UpdateView(UpdateAPIView):
+    update = Post.object.all()
+
+class DeleteView(DeleteAPIView):
+    delete = Post.object.all()
+
+
     
     
 
